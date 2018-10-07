@@ -1,0 +1,33 @@
+Starfleet challenge
+
+Prequisites:
+* Git
+* JDK 1.8.0
+* Maven 3.0.5 or newer
+
+Build and run instructions:
+1. Git clone and cd into project directory
+2. Run: mvn clean package
+3. Run: java -jar target/starfleet-1.0.jar <field_file> <script_file>
+
+Assumptions made:
+* Program will deal with happy path only
+    - No under/overflow for chosen datatypes
+    - No field characters besides lower/uppercase alpha
+    - Field file and script file are always given, in that order
+    - Commands and firing patterns are always valid and if both are given in order firing pattern then direction
+    - Input grid will fit in memory
+    - Line lengths for field file will all be equal
+* Newline after result/score display
+
+Design considerations:
+* Runnable JAR
+* One step build with Maven
+* Added JUnit unit tests
+* Added logging with Logback
+
+TODOs:
+* Error handling
+* More unit testing
+* Refactoring
+* More logging
