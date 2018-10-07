@@ -31,3 +31,4 @@ TODOs:
 * More unit testing
 * Refactoring
 * More logging
+* Containerize with Docker
