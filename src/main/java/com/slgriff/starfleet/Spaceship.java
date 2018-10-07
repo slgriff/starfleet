@@ -17,40 +17,67 @@ class Spaceship {
     private Map<String, List<List<Integer>>> firingPatterns;
 
     public Spaceship() {
-        x = 0;
-        y = 0;
-        z = 0;
-
         firingPatterns = new HashMap<String, List<List<Integer>>>();
 
+        List<List<Integer>> alpha = new ArrayList<List<Integer>>(4);
+        alpha.add(Arrays.asList(-1,-1));
+        alpha.add(Arrays.asList(-1,1));
+        alpha.add(Arrays.asList(1,-1));
+        alpha.add(Arrays.asList(1,1));
+
+        List<List<Integer>> beta = new ArrayList<List<Integer>>(4);
+        beta.add(Arrays.asList(-1,0));
+        beta.add(Arrays.asList(0,-1));
+        beta.add(Arrays.asList(0,1));
+        beta.add(Arrays.asList(1,0));
+
         List<List<Integer>> gamma = new ArrayList<List<Integer>>(3);
-    
         gamma.add(Arrays.asList(-1, 0));
         gamma.add(Arrays.asList(0, 0));
         gamma.add(Arrays.asList(1, 0));
 
+        List<List<Integer>> delta = new ArrayList<List<Integer>>(3);
+        delta.add(Arrays.asList(0, -1));
+        delta.add(Arrays.asList(0, 0));
+        delta.add(Arrays.asList(0, 1));
+
+
+        firingPatterns.put("alpha", alpha);
+        firingPatterns.put("beta", beta);
         firingPatterns.put("gamma", gamma);
+        firingPatterns.put("delta", delta);
     }
 
-    public void resetPosition() {
-        x = 0;
-        y = 0;
-        z = 0;
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void move(String direction) {
+        if (direction.equals("north")) {
+            moveNorth();
+        } else if (direction.equals("south")) {
+            moveSouth();
+        } else if (direction.equals("east")) {
+            moveEast();
+        } else { // west
+            moveWest();
+        }
     }
   
-    public void moveNorth() {
+    private void moveNorth() {
         --y;
     }
 
-    public void moveSouth() {
+    private void moveSouth() {
         ++y;
     }
 
-    public void moveEast() {
+    private void moveEast() {
         ++x;
     }
 
-    public void moveWest() {
+    private void moveWest() {
         --x;
     }
 

@@ -84,7 +84,7 @@
                 <archive>
                   <manifest>
                     <addClasspath>true</addClasspath>
-                    <mainClass>com.slgriff.starfleet.Evaluator</mainClass>
+                    <mainClass>com.slgriff.starfleet.Application</mainClass>
                   </manifest>
                 </archive>
               </configuration>
@@ -119,6 +119,9 @@
                       <requireMavenVersion>
                         <version>3.0.5</version>
                       </requireMavenVersion>
+                      <requireJavaVersion>
+                        <version>1.8.0</version>
+                      </requireJavaVersion>
                     </rules>
                   </configuration>
                 </execution>

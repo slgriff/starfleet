@@ -17,7 +17,7 @@ class MineField {
 
     private SortedMap<Integer, Integer> minesAtDepth;
 
-    private String[] prettyPrintArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+    private static final String[] prettyPrintArray = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 
     public MineField() {
         minefield = new TreeMap<Integer, SortedMap<Integer, Integer>>();
@@ -156,7 +156,12 @@ class MineField {
                 String loc = ".";                
                 if (minefield.containsKey(row)) {
                     if (minefield.get(row).containsKey(col)) {
-                        loc = prettyPrintArray[minefield.get(row).get(col)-1-z];
+                        int mineZ = minefield.get(row).get(col);
+                        if (mineZ <= z) {
+                            loc = "*";
+                        } else {
+                            loc = prettyPrintArray[mineZ-1-z];
+                        }
                     }
                 }
                 sb.append(loc);
@@ -166,5 +171,15 @@ class MineField {
             }
         }
         return sb.toString();
+    }
+
+    public static int getStartingDepth(String c) {
+        for (int index = 0; index < prettyPrintArray.length; ++index) {
+            if (prettyPrintArray[index].equals(c)) {
+                return index+1;
+            }
+        }
+        
+        throw new IllegalStateException();
     }
 }
